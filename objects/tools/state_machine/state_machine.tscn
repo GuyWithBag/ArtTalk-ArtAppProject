@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://demaibfa76sq4"]
+
+[ext_resource type="Script" path="res://scripts/classes/state_machine/state_machine.gd" id="1_bpb20"]
+[ext_resource type="Script" path="res://objects/debug_tools/children_type_enforcer/children_type_enforcer.gd" id="2_h1o6k"]
+[ext_resource type="Script" path="res://objects/tools/state_machine/state_machine_conditions.gd" id="3_7kv4s"]
+[ext_resource type="Script" path="res://objects/tools/state_machine/base_states_parent.gd" id="3_fu34i"]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource("1_bpb20")
+
+[node name="States" type="Node" parent="."]
+
+[node name="ChildrenTypeEnforcer" type="Node" parent="States"]
+script = ExtResource("2_h1o6k")
+types = PackedStringArray("BaseStateParent")
+
+[node name="Default" type="Node" parent="States"]
+script = ExtResource("3_fu34i")
+
+[node name="ChildrenTypeEnforcer" type="Node" parent="States/Default"]
+script = ExtResource("2_h1o6k")
+types = PackedStringArray("BaseState")
+
+[node name="Conditions" type="Node" parent="."]
+script = ExtResource("3_7kv4s")

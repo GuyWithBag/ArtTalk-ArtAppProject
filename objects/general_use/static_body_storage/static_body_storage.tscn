@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3aa0f7vi15og"]
+
+[ext_resource type="PackedScene" uid="uid://dnrhi2t6p7rq0" path="res://objects/general_use/static_body_interactable/static_body_interactable.tscn" id="1_0r7ps"]
+[ext_resource type="Script" path="res://scripts/classes/storage.gd" id="2_p64dj"]
+[ext_resource type="Script" path="res://scripts/classes/open_and_close_logic.gd" id="3_j0d2d"]
+
+[node name="StaticBodyStorage" groups=["Interactable"] instance=ExtResource("1_0r7ps")]
+
+[node name="Interactable" parent="." index="0"]
+script = ExtResource("2_p64dj")
+inventory = null
+locked = false
+
+[node name="OpenAndCloseLogic" type="Node" parent="." index="2"]
+script = ExtResource("3_j0d2d")

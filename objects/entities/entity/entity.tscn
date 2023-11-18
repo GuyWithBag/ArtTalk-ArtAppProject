@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://chj8iutgyi4pf"]
+
+[ext_resource type="Script" path="res://objects/entities/entity/entity.gd" id="1_is8ii"]
+[ext_resource type="PackedScene" uid="uid://demaibfa76sq4" path="res://objects/tools/state_machine/state_machine.tscn" id="2_css81"]
+[ext_resource type="Script" path="res://scripts/classes/random_id_generator.gd" id="3_nsnpk"]
+[ext_resource type="Script" path="res://scripts/classes/entity_navigation_agent.gd" id="4_lsabt"]
+
+[node name="Entity" type="CharacterBody2D" groups=["Entity"]]
+collision_layer = 16
+collision_mask = 63
+script = ExtResource("1_is8ii")
+
+[node name="StateMachine" parent="." instance=ExtResource("2_css81")]
+unique_name_in_owner = true
+
+[node name="CurrentStateLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -50.0
+offset_top = -116.0
+offset_right = 54.0
+offset_bottom = -90.0
+text = "Current State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="SoundEffects" type="Node2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="RandomIDGenerator" type="Node" parent="."]
+script = ExtResource("3_nsnpk")
+
+[node name="DoorUnloadTime" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+script = ExtResource("4_lsabt")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[editable path="StateMachine"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryResource" load_steps=4 format=3 uid="uid://b3vvyj1nunklq"]
+
+[ext_resource type="Resource" path="res://objects/items/test_item/test_item.tres" id="1_5g3fa"]
+[ext_resource type="Resource" uid="uid://bahuwx2q3c6v" path="res://objects/items/flashlight/flashlight.tres" id="2_7fagw"]
+[ext_resource type="Script" path="res://scripts/resources/inventory_resource.gd" id="2_in36h"]
+
+[resource]
+script = ExtResource("2_in36h")
+items = [ExtResource("1_5g3fa"), ExtResource("1_5g3fa"), ExtResource("1_5g3fa"), ExtResource("2_7fagw")]

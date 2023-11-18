@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0o2g2kbhr75h"]
+
+[ext_resource type="PackedScene" uid="uid://dnrhi2t6p7rq0" path="res://objects/general_use/static_body_interactable/static_body_interactable.tscn" id="1_4wr4n"]
+[ext_resource type="Texture2D" uid="uid://dguj8hfffipiv" path="res://objects/interactables/moon/moon.png" id="2_mt0sd"]
+[ext_resource type="Texture2D" uid="uid://bym60ekunolrj" path="res://objects/lights/soft_light.png" id="3_130f5"]
+
+[node name="Moon" instance=ExtResource("1_4wr4n")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+texture_filter = 1
+texture = ExtResource("2_mt0sd")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="7"]
+blend_mode = 2
+texture = ExtResource("3_130f5")

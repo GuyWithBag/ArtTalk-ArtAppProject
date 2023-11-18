@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://cy1cy7jms4nf6"]
+
+[ext_resource type="PackedScene" uid="uid://hka354208ql1" path="res://objects/levels/template/00_room_template.tscn" id="1_dij1t"]
+[ext_resource type="PackedScene" uid="uid://b0o2g2kbhr75h" path="res://objects/interactables/moon/moon.tscn" id="2_5ops7"]
+[ext_resource type="Texture2D" uid="uid://damt38ijlx63y" path="res://objects/tiles/park_road.png" id="2_gxppf"]
+[ext_resource type="PackedScene" uid="uid://syi0ka7ee7vt" path="res://objects/interactables/bench/bench.tscn" id="2_pb8ck"]
+[ext_resource type="PackedScene" uid="uid://binh0ut6wlsj2" path="res://objects/interactables/park_tree/park_tree.tscn" id="3_w8hef"]
+[ext_resource type="Texture2D" uid="uid://05ei41rsdyxc" path="res://objects/environment/background/night_sky/night_sky.png" id="4_67oiw"]
+[ext_resource type="Texture2D" uid="uid://dl3qr56fjdylw" path="res://objects/environment/background/night_sky/cloud_back.png" id="4_dhpbj"]
+[ext_resource type="Texture2D" uid="uid://bvdjsk4kqrsfd" path="res://objects/environment/background/night_sky/cloud_front.png" id="5_sjoqd"]
+[ext_resource type="Texture2D" uid="uid://c1ymf2m2kf4bv" path="res://objects/environment/background/night_sky/cloud_mid.png" id="6_2i44k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qieii"]
+texture = ExtResource("2_gxppf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_souh1"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 6
+sources/0 = SubResource("TileSetAtlasSource_qieii")
+
+[node name="Park" instance=ExtResource("1_dij1t")]
+
+[node name="Camera2D" type="Camera2D" parent="Cameras" index="0"]
+position = Vector2(120, 68)
+
+[node name="ParkTree" parent="Environment" index="0" instance=ExtResource("3_w8hef")]
+z_index = 1
+position = Vector2(211, 96)
+
+[node name="ParkTree2" parent="Environment" index="1" instance=ExtResource("3_w8hef")]
+z_index = 1
+position = Vector2(40, 96)
+
+[node name="ParkTree1" parent="Environment/ParkTree2" index="6"]
+visible = false
+
+[node name="ParkTree2" parent="Environment/ParkTree2" index="7"]
+visible = true
+
+[node name="Background" parent="Environment" index="2"]
+position = Vector2(4, -28)
+
+[node name="Node2D" type="Node2D" parent="Environment/Background" index="0"]
+
+[node name="ParkTree3" parent="Environment/Background/Node2D" index="0" instance=ExtResource("3_w8hef")]
+position = Vector2(6, 130)
+scale = Vector2(0.904043, 0.904043)
+
+[node name="ParkTree6" parent="Environment/Background/Node2D" index="1" instance=ExtResource("3_w8hef")]
+position = Vector2(247, 132)
+scale = Vector2(0.904043, 0.904043)
+
+[node name="ParkTree4" parent="Environment/Background/Node2D" index="2" instance=ExtResource("3_w8hef")]
+position = Vector2(172, 123)
+scale = Vector2(0.682953, 0.682953)
+
+[node name="ParkTree1" parent="Environment/Background/Node2D/ParkTree4" index="6"]
+visible = false
+
+[node name="ParkTree2" parent="Environment/Background/Node2D/ParkTree4" index="7"]
+visible = true
+
+[node name="ParkTree5" parent="Environment/Background/Node2D" index="3" instance=ExtResource("3_w8hef")]
+position = Vector2(69, 127)
+scale = Vector2(0.737941, 0.737941)
+
+[node name="ParkTree1" parent="Environment/Background/Node2D/ParkTree5" index="6"]
+visible = false
+
+[node name="ParkTree2" parent="Environment/Background/Node2D/ParkTree5" index="7"]
+visible = true
+
+[node name="CloudFront" type="Sprite2D" parent="Environment/Background/Node2D" index="4"]
+z_index = -1
+position = Vector2(115, 65)
+texture = ExtResource("5_sjoqd")
+
+[node name="Moon" parent="Environment/Background/Node2D" index="5" instance=ExtResource("2_5ops7")]
+z_index = -2
+position = Vector2(115, 69)
+
+[node name="CloudMid" type="Sprite2D" parent="Environment/Background/Node2D" index="6"]
+z_index = -3
+position = Vector2(116, 72)
+texture = ExtResource("6_2i44k")
+
+[node name="CloudBack" type="Sprite2D" parent="Environment/Background/Node2D" index="7"]
+z_index = -4
+position = Vector2(115, 77)
+texture = ExtResource("4_dhpbj")
+
+[node name="NightSky" type="Sprite2D" parent="Environment/Background" index="1"]
+z_index = -5
+position = Vector2(115, 71)
+texture = ExtResource("4_67oiw")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Environment" index="3"]
+color = Color(0.670588, 0.780392, 1, 1)
+
+[node name="Bench" parent="Objects" index="0" instance=ExtResource("2_pb8ck")]
+z_index = 2
+position = Vector2(119, 99)
+
+[node name="TileMap" type="TileMap" parent="Tilemap" index="0"]
+texture_filter = 1
+tile_set = SubResource("TileSet_souh1")
+format = 2
+layer_0/tile_data = PackedInt32Array(131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 196615, 0, 1, 196614, 0, 1, 196613, 0, 1, 196612, 0, 1, 196611, 0, 1, 196610, 0, 1, 196609, 0, 1, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131072, 0, 0, 196608, 0, 1, 196607, 0, 0, 131080, 0, 0, 196606, 0, 0, 131081, 0, 0, 196617, 0, 1, 196616, 0, 1, 262143, 0, 1, 262142, 0, 1, 262141, 0, 1, 196618, 0, 1, 131082, 0, 0, 196605, 0, 0, 196604, 0, 0, 262140, 0, 1)
+
+[editable path="Environment/ParkTree2"]
+[editable path="Environment/Background/Node2D/ParkTree4"]
+[editable path="Environment/Background/Node2D/ParkTree5"]
+[editable path="StateMachine"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnrhi2t6p7rq0"]
+
+[ext_resource type="Script" path="res://scripts/classes/interactable.gd" id="1_gyduh"]
+[ext_resource type="Script" path="res://scripts/classes/object_facing_direction.gd" id="2_1c133"]
+[ext_resource type="Resource" uid="uid://bxnw8bld407c7" path="res://levels/dialogues/generic_dialogues.dialogue" id="2_2t1bk"]
+
+[node name="StaticBodyInteractable" type="StaticBody2D" groups=["InteractableObject"]]
+
+[node name="Interactable" type="Area2D" parent="." groups=["Interactable"]]
+collision_layer = 97
+collision_mask = 4
+script = ExtResource("1_gyduh")
+starting_interact_dialogue = ExtResource("2_2t1bk")
+starting_interact_dialogue_title = "default_interact"
+ending_interact_dialogue_title = "default_interact"
+
+[node name="ObjectFacingDirection" type="Node" parent="."]
+script = ExtResource("2_1c133")
+down_nodes = Array[NodePath]([NodePath("../DownNodes")])
+right_nodes = Array[NodePath]([NodePath("../RightNodes")])
+left_nodes = Array[NodePath]([NodePath("../LeftNodes")])
+up_nodes = Array[NodePath]([NodePath("../UpNodes")])
+
+[node name="DownNodes" type="Node2D" parent="."]
+
+[node name="RightNodes" type="Node2D" parent="."]
+visible = false
+
+[node name="LeftNodes" type="Node2D" parent="."]
+visible = false
+
+[node name="UpNodes" type="Node2D" parent="."]
+visible = false
+
+[connection signal="walk_in_interacted" from="Interactable" to="Interactable" method="_on_walk_in_interacted"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw5ycbn8o5hkx"]
+
+[ext_resource type="Script" path="res://scripts/globals/game_manager/game_manager.gd" id="1_ppg5x"]
+[ext_resource type="PackedScene" uid="uid://demaibfa76sq4" path="res://objects/tools/state_machine/state_machine.tscn" id="2_y7gcp"]
+[ext_resource type="Script" path="res://scripts/classes/state_machine/base_state.gd" id="3_ui4f7"]
+[ext_resource type="Script" path="res://scripts/globals/game_manager/states/paused.gd" id="4_7isb2"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_ppg5x")
+
+[node name="StateMachine" parent="." instance=ExtResource("2_y7gcp")]
+
+[node name="Menu" type="Node" parent="StateMachine/States/Default" index="1"]
+script = ExtResource("3_ui4f7")
+
+[node name="Paused" type="Node" parent="StateMachine/States/Default" index="2"]
+script = ExtResource("4_7isb2")
+
+[node name="Playing" type="Node" parent="StateMachine/States/Default" index="3"]
+script = ExtResource("3_ui4f7")
+
+[node name="CutScene" type="Node" parent="StateMachine/States/Default" index="4"]
+script = ExtResource("3_ui4f7")
+
+[editable path="StateMachine"]

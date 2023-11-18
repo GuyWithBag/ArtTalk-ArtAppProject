@@ -1,0 +1,6 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/classes/for_levels/room_node.gd" id="1_kp2dc"]
+[ext_resource type="Script" path="res://scripts/classes/world_event.gd" id="2_3gflo"]
+[ext_resource type="Script" path="res://scripts/classes/state_machine/state_machine.gd" id="3_4wfft"]
+[ext_resource type="PackedScene" uid="uid://daj00daq8bcvo" path="res://objects/entities/player/player.tscn" id="4_rf8vr"]

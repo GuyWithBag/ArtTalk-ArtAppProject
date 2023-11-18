@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44bo84iubcw0"]
+
+[ext_resource type="Texture2D" uid="uid://bym60ekunolrj" path="res://objects/lights/soft_light.png" id="1_wkcho"]
+[ext_resource type="Script" path="res://objects/items/flashlight/flashlight_equipment.gd" id="2_knc5u"]
+
+[node name="Flashlight" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("1_wkcho")
+
+[node name="Flashlight" type="Node" parent="."]
+script = ExtResource("2_knc5u")

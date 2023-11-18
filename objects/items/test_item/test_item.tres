@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b0780uoi53gma" path="res://objects/items/test_item/test_item.png" id="1_6hr1p"]
+[ext_resource type="Script" path="res://scripts/resources/item_resource/item_resource.gd" id="1_78iad"]
+
+[resource]
+script = ExtResource("1_78iad")
+item_name = &"test item"
+description = "ur mom is gayer than ur dad"
+item_icon = ExtResource("1_6hr1p")

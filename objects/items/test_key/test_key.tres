@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bg6spj44n2prp"]
+
+[ext_resource type="Script" path="res://scripts/resources/item_resource/key_item.gd" id="1_8ysl5"]
+
+[resource]
+script = ExtResource("1_8ysl5")
+item_name = &"Test Key"
+description = null

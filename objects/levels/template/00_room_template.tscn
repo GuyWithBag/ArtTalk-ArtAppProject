@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://hka354208ql1"]
+
+[ext_resource type="Script" path="res://scripts/classes/world_event.gd" id="2_2chyd"]
+[ext_resource type="Script" path="res://objects/debug_tools/children_type_enforcer/children_type_enforcer.gd" id="4_f4c0v"]
+[ext_resource type="PackedScene" uid="uid://demaibfa76sq4" path="res://objects/tools/state_machine/state_machine.tscn" id="6_sf2b4"]
+
+[node name="RoomTemplate" type="Node2D"]
+editor_description = "Nodes that should be created is: 
+CutscenePlayer
+
+MapTemplate > Objects > Cameras > Lighting > Actual Scene"
+y_sort_enabled = true
+
+[node name="Positions" type="Node2D" parent="." groups=["PositionsNode"]]
+
+[node name="ChildrenTypeEnforcer" type="Node" parent="Positions"]
+script = ExtResource("4_f4c0v")
+types = PackedStringArray("Node2D", "Marker2D")
+
+[node name="DefaultMarker2D" type="Marker2D" parent="Positions"]
+visible = false
+gizmo_extents = 133.4
+
+[node name="Cameras" type="Node2D" parent="." groups=["CamerasNode"]]
+
+[node name="Entities" type="Node2D" parent="." groups=["EntitiesNode"]]
+y_sort_enabled = true
+
+[node name="ChildrenTypeEnforcerComponent" type="Node" parent="Entities"]
+script = ExtResource("4_f4c0v")
+types = PackedStringArray("Entity")
+
+[node name="Lights" type="Node2D" parent="." groups=["LightsNode"]]
+
+[node name="ChildrenTypeEnforcer" type="Node" parent="Lights"]
+script = ExtResource("4_f4c0v")
+types = PackedStringArray("Light2D")
+
+[node name="Environment" type="Node2D" parent="." groups=["EnvironmentNode"]]
+
+[node name="Background" type="Node2D" parent="Environment"]
+z_index = -1
+
+[node name="World" type="Node2D" parent="." groups=["WorldNode"]]
+editor_description = "This will always contain:  
+-CanvasModulate
+"
+
+[node name="CanvasModulates" type="Node2D" parent="World"]
+
+[node name="CollisionBorders" type="Node2D" parent="World"]
+modulate = Color(0.886275, 0, 0, 1)
+
+[node name="MapBorders" type="Node2D" parent="World/CollisionBorders"]
+
+[node name="CreatedBorders" type="Node2D" parent="World/CollisionBorders"]
+
+[node name="TriggerCollisions" type="Node2D" parent="World"]
+editor_description = "These are where the trigger event collisions should be put. "
+
+[node name="Objects" type="Node2D" parent="." groups=["ObjectsNode"]]
+y_sort_enabled = true
+
+[node name="Tilemap" type="Node2D" parent="." groups=["TilemapNode"]]
+editor_description = "This will contain TileMap node"
+y_sort_enabled = true
+position = Vector2(0, 32)
+
+[node name="CutsceneObjects" type="Node2D" parent="." groups=["CutsceneObjectsNode"]]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CutsceneObjects"]
+
+[node name="WorldEventHandler" type="Node" parent="."]
+editor_description = "The child nodes of these should be an extension of WorldEvent
+"
+
+[node name="GenericEvents" type="Node" parent="WorldEventHandler"]
+
+[node name="ItemsPickedUp" type="Node" parent="WorldEventHandler/GenericEvents"]
+script = ExtResource("2_2chyd")
+
+[node name="DoorOpened" type="Node" parent="WorldEventHandler/GenericEvents"]
+script = ExtResource("2_2chyd")
+
+[node name="OpenDoor" type="Node" parent="WorldEventHandler/GenericEvents"]
+editor_description = "This event is for opening the door after the user has chosen in the dialogue to open the door. "
+script = ExtResource("2_2chyd")
+
+[node name="SpecificEvents" type="Node" parent="WorldEventHandler"]
+
+[node name="StateMachine" parent="." instance=ExtResource("6_sf2b4")]
+
+[node name="Scripts" type="Node" parent="."]
+
+[connection signal="child_entered_tree" from="Entities" to="Entities/ChildrenTypeEnforcerComponent" method="_on_child_entered_tree"]
+
+[editable path="StateMachine"]

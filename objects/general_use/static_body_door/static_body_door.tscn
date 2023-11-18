@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn7qr346piq7a"]
+
+[ext_resource type="PackedScene" uid="uid://dnrhi2t6p7rq0" path="res://objects/general_use/static_body_interactable/static_body_interactable.tscn" id="1_wbm86"]
+[ext_resource type="Script" path="res://scripts/classes/door.gd" id="2_a5rhe"]
+[ext_resource type="Resource" uid="uid://bxnw8bld407c7" path="res://levels/dialogues/generic_dialogues.dialogue" id="3_5byae"]
+[ext_resource type="Script" path="res://scripts/classes/open_and_close_logic.gd" id="4_7o4g2"]
+[ext_resource type="Script" path="res://objects/general_use/static_body_door/entity_unloader.gd" id="4_nw1xd"]
+
+[node name="StaticBodyDoor" instance=ExtResource("1_wbm86")]
+
+[node name="Interactable" parent="." index="0" groups=["Door"]]
+script = ExtResource("2_a5rhe")
+door_id = ""
+connected_door_id = ""
+collisions = Array[CollisionShape2D]([])
+object_name = "Door"
+starting_interact_dialogue = null
+starting_interact_dialogue_title = ""
+
+[node name="EntityUnloader" type="Node" parent="." index="1" node_paths=PackedStringArray("object_of_reference", "unload_position")]
+script = ExtResource("4_nw1xd")
+object_of_reference = NodePath("..")
+unload_position = NodePath("../UnloadPosition")
+
+[node name="UnloadPosition" type="Node2D" parent="." index="2"]
+editor_description = "This is where the entity will exit to. "
+
+[node name="OpenAndCloseLogic" type="Node" parent="." index="4"]
+script = ExtResource("4_7o4g2")
+open_dialogue = ExtResource("3_5byae")
+open_dialogue_title = "open_door"

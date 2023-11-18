@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://bahuwx2q3c6v"]
+
+[ext_resource type="PackedScene" uid="uid://b44bo84iubcw0" path="res://objects/items/flashlight/flashlight.tscn" id="1_x70mt"]
+[ext_resource type="Texture2D" uid="uid://b0780uoi53gma" path="res://objects/items/test_item/test_item.png" id="2_rxacr"]
+[ext_resource type="Script" path="res://scripts/resources/item_resource/equipment_item.gd" id="4_7k2d6"]
+
+[resource]
+script = ExtResource("4_7k2d6")
+equipment_type = 0
+equipment_scene = ExtResource("1_x70mt")
+item_name = &"Flashlight"
+description = null
+item_icon = ExtResource("2_rxacr")

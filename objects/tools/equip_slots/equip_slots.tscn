@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://od6v5ve6chn2"]
+
+[ext_resource type="Script" path="res://scripts/classes/equip_slots/equip_slots.gd" id="1_g8yb0"]
+
+[node name="EquipSlots" type="Node2D"]
+position = Vector2(0, -3)
+script = ExtResource("1_g8yb0")
+
+[node name="MainHand" type="Node2D" parent="."]
+
+[node name="OffHand" type="Node2D" parent="."]

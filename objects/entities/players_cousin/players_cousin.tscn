@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://4u8nu5gya847"]
+
+[ext_resource type="PackedScene" uid="uid://bcgvaahht0c1r" path="res://objects/entities/npc/npc.tscn" id="1_sjsn8"]
+[ext_resource type="Script" path="res://objects/entities/players_cousin/players_cousin_base_state.gd" id="2_3e7dg"]
+[ext_resource type="Script" path="res://objects/entities/players_cousin/players_cousin_move_state.gd" id="3_5kc6s"]
+[ext_resource type="PackedScene" uid="uid://dg4mew7rh540p" path="res://objects/general_use/nodes_detector_area/nodes_detector_area.tscn" id="4_uk8uo"]
+
+[sub_resource type="GDScript" id="GDScript_tdo7g"]
+script/source = "extends StateMachine 
+
+func get_class_name() -> PackedStringArray: 
+	return [\"StateMachine\"]
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ltry"]
+size = Vector2(13, 41)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhts0"]
+load_path = "res://.godot/imported/player.png-42748332d6d66585c72749792a0cf8f6.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n000t"]
+radius = 88.09
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkjmm"]
+size = Vector2(13, 41)
+
+[node name="PlayersCousin" instance=ExtResource("1_sjsn8")]
+
+[node name="StateMachine" parent="." index="0"]
+script = SubResource("GDScript_tdo7g")
+
+[node name="Idle" type="Node" parent="StateMachine/States/Default" index="1"]
+script = ExtResource("2_3e7dg")
+
+[node name="Chase" type="Node" parent="StateMachine/States/Default" index="2"]
+script = ExtResource("3_5kc6s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0.5, -18.5)
+shape = SubResource("RectangleShape2D_7ltry")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+position = Vector2(0.5, -18.5)
+scale = Vector2(0.65, 2.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="10"]
+texture_filter = 1
+position = Vector2(0, -19)
+texture = SubResource("CompressedTexture2D_mhts0")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="PlayerDetectorArea" parent="." index="11" instance=ExtResource("4_uk8uo")]
+position = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectorArea/Area2D" index="0"]
+shape = SubResource("CircleShape2D_n000t")
+
+[node name="RayCast2D" type="RayCast2D" parent="PlayerDetectorArea" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="12"]
+position = Vector2(0.5, -18.5)
+shape = SubResource("RectangleShape2D_gkjmm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="13"]
+
+[editable path="StateMachine"]
+[editable path="PlayerDetectorArea"]

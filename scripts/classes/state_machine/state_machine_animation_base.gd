@@ -1,0 +1,4 @@
+extends Resource
+class_name StateMachineAnimationBase
+
+var animation_player: AnimationPlayer

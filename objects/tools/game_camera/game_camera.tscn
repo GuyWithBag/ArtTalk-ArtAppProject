@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm2ogxpcn08aj"]
+
+[ext_resource type="Script" path="res://objects/tools/game_camera/game_camera.gd" id="1_7aahx"]
+
+[node name="GameCamera" type="Camera2D" groups=["Camera"]]
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 14.0
+rotation_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.1
+drag_bottom_margin = 0.1
+script = ExtResource("1_7aahx")
+left_side_position = -512
+top_side_position = -288
+right_side_position = 512
+bottom_side_position = 288
+
+[node name="Area2D" type="Area2D" parent="."]
+modulate = Color(1, 0, 1, 0.392157)
+collision_layer = 512
+collision_mask = 0
+
+[node name="ObjectDetection" type="Area2D" parent="."]
+modulate = Color(1, 0, 1, 0.392157)
+collision_layer = 0
+collision_mask = 4
+
+[connection signal="body_entered" from="ObjectDetection" to="." method="_on_object_detection_body_entered"]

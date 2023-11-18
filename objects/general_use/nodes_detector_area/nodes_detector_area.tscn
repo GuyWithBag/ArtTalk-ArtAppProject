@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg4mew7rh540p"]
+
+[ext_resource type="Script" path="res://objects/general_use/nodes_detector_area/nodes_detector_area.gd" id="1_r6uxi"]
+
+[node name="NodesDetectorArea" type="Node2D"]
+editor_description = "Detects Areas or Bodies with a Raycast. Set collision mask and layer of Area2D in the Area2D Node"
+script = ExtResource("1_r6uxi")
+cannot_detect_through_collision = true
+raycast_obstacles = Array[int]([2, 6])
+raycast_collision_mask = 39
+raycast_collide_with = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="DebugLines" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

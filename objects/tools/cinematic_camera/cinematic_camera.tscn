@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1mc0w50sxodx"]
+
+[ext_resource type="Script" path="res://objects/tools/cinematic_camera/cinematic_camera.gd" id="1_s0aym"]
+
+[node name="CinematicCamera" type="Camera2D" groups=["Camera", "CinematicCamera"]]
+script = ExtResource("1_s0aym")

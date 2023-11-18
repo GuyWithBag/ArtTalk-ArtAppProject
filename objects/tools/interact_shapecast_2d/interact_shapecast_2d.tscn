@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8hybrpjnqksc"]
+
+[ext_resource type="Script" path="res://objects/tools/interact_shapecast_2d/interact_shapecast_2d.gd" id="1_7jyde"]
+
+[node name="InteractShapeCast2D" type="ShapeCast2D"]
+collision_mask = 192
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("1_7jyde")

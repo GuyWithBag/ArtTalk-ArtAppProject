@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://syi0ka7ee7vt"]
+
+[ext_resource type="PackedScene" uid="uid://dnrhi2t6p7rq0" path="res://objects/general_use/static_body_interactable/static_body_interactable.tscn" id="1_2hbgo"]
+[ext_resource type="Texture2D" uid="uid://sohn8psqvcn" path="res://objects/interactables/bench/bench.png" id="2_yhgod"]
+
+[node name="Bench" instance=ExtResource("1_2hbgo")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("2_yhgod")
